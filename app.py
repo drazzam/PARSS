@@ -2,34 +2,74 @@ import streamlit as st
 import pandas as pd
 
 def main():
-    # Set page config first, before any other Streamlit commands
+    # Set page config first
     st.set_page_config(
         page_title="PARSS Calculator",
         page_icon="🏥",
         layout="wide"
     )
 
-    # Then add custom CSS to hide elements
+    # Enhanced CSS to hide elements in both desktop and mobile views
     hide_streamlit_style = """
         <style>
+        /* Hide main menu, footer, and header */
         #MainMenu {visibility: hidden;}
-        footer {visibility: hidden;}
+        footer {display: none !important;}
+        footer:after {display: none !important;}
         header {visibility: hidden;}
+        
+        /* Hide GitHub fork button and all related elements */
         .css-1rs6os {visibility: hidden;}
         .css-1lsmgbg {display: none;}
         .css-6qob1r {visibility: hidden;}
         .css-erpbk7 {display: none;}
+        
+        /* Hide Streamlit deployment elements */
         .stDeployButton {display: none;}
-        .viewerBadge_container__1QSob {display: none;}
-        .viewerBadge_link__1S137 {display: none;}
+        .viewerBadge_container__1QSob {display: none !important;}
+        .viewerBadge_link__1S137 {display: none !important;}
         div.stToolbar {display: none;}
+        
+        /* Hide additional elements that might appear */
         .css-eh5xgm {visibility: hidden;}
         .css-1avcm0n {visibility: hidden;}
         .css-14xtw13 {visibility: hidden;}
+        
+        /* Hide sidebar and related elements */
         section[data-testid="stSidebar"] {visibility: hidden;}
+        
+        /* Mobile-specific elements */
+        .streamlit-expanderHeader {visibility: hidden;}
+        .stActionButton {display: none !important;}
+        div[data-testid="stToolbar"] {display: none !important;}
+        div[data-testid="stDecoration"] {display: none !important;}
+        div[data-testid="stStatusWidget"] {display: none !important;}
+        
+        /* Additional mobile elements */
+        .stApp > header {display: none !important;}
+        .stApp > footer {display: none !important;}
+        .stGitHubLink {display: none !important;}
+        
+        /* Force remove Streamlit branding */
+        .element-container iframe {display: none !important;}
+        .stMarkdown div iframe {display: none !important;}
+        
+        /* Hide any iframe-based content */
+        iframe[src*="streamlit"] {display: none !important;}
+        
+        /* Additional specific mobile classes */
+        .css-1dp5vir {display: none !important;}  /* Fork button */
+        .css-1v3fvcr {display: none !important;}  /* Deployment info */
+        .css-1vq4p4l {display: none !important;}  /* Header items */
+        .css-1y4p8pa {display: none !important;}  /* Mobile menu */
         </style>
     """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+    # Add viewport meta tag for mobile
+    st.markdown("""
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        """, unsafe_allow_html=True)
 
     st.title("Post-Adenotonsillectomy Risk Stratification System (PARSS) Calculator")
     st.markdown("### A Clinical Tool for Pediatric Otolaryngologists")
