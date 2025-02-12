@@ -2,7 +2,14 @@ import streamlit as st
 import pandas as pd
 
 def main():
-    # Hide all streamlit elements and github profile
+    # Set page config first, before any other Streamlit commands
+    st.set_page_config(
+        page_title="PARSS Calculator",
+        page_icon="🏥",
+        layout="wide"
+    )
+
+    # Then add custom CSS to hide elements
     hide_streamlit_style = """
         <style>
         #MainMenu {visibility: hidden;}
@@ -23,12 +30,6 @@ def main():
         </style>
     """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
-    st.set_page_config(
-        page_title="PARSS Calculator",
-        page_icon="🏥",
-        layout="wide"
-    )
 
     st.title("Post-Adenotonsillectomy Risk Stratification System (PARSS) Calculator")
     st.markdown("### A Clinical Tool for Pediatric Otolaryngologists")
