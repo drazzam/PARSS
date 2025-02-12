@@ -1,7 +1,29 @@
 import streamlit as st
 import pandas as pd
 
-def calculate_risk_score():
+def main():
+    # Hide all streamlit elements and github profile
+    hide_streamlit_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        header {visibility: hidden;}
+        .css-1rs6os {visibility: hidden;}
+        .css-1lsmgbg {display: none;}
+        .css-6qob1r {visibility: hidden;}
+        .css-erpbk7 {display: none;}
+        .stDeployButton {display: none;}
+        .viewerBadge_container__1QSob {display: none;}
+        .viewerBadge_link__1S137 {display: none;}
+        div.stToolbar {display: none;}
+        .css-eh5xgm {visibility: hidden;}
+        .css-1avcm0n {visibility: hidden;}
+        .css-14xtw13 {visibility: hidden;}
+        section[data-testid="stSidebar"] {visibility: hidden;}
+        </style>
+    """
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
     st.set_page_config(
         page_title="PARSS Calculator",
         page_icon="🏥",
@@ -133,4 +155,4 @@ def calculate_risk_score():
     """)
 
 if __name__ == "__main__":
-    calculate_risk_score()
+    main()
